@@ -1,6 +1,7 @@
 'use client'
 import { memo, useContext } from 'react'
-import { GlobalContext } from '../page'
+import { GlobalContext } from './ContextProvider'
+
 import Dropdown from './Dropdown'
 import Header from './Header'
 

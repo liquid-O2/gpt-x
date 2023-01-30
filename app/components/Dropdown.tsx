@@ -1,7 +1,8 @@
 'use client'
 import React, { Dispatch, SetStateAction, useState } from 'react'
 import { ChevronDown } from 'react-feather'
-import { Model, Temperature } from '../page'
+import { Model, Temperature } from './ContextProvider'
+
 type TDropdown = {
   title: string
   options: Model[] | Temperature[]

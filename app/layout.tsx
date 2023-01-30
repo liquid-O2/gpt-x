@@ -1,16 +1,22 @@
-import './globals.css'
+import localfont from '@next/font/local'
+import '../styles/globals.css'
+
+const NeueBit = localfont({
+  src: [
+    {
+      path: '../fonts/PPNeueBit-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-NeueBit',
+})
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-
-  
   return (
-    <html lang='en'>
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html lang='en' className={NeueBit.variable}>
       <head />
-      <body>{children}</body>
+      <body className='font-bold bg-background text-white text-2xl'>{children}</body>
     </html>
   )
 }

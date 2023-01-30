@@ -1,6 +1,6 @@
 'use client'
-import React, { FormEvent, Suspense, useContext, useRef, useState } from 'react'
-import { ChevronRight, Divide, Sidebar, Trash } from 'react-feather'
+import React, { FormEvent, useContext, useRef, useState } from 'react'
+import { ChevronRight, Sidebar, Trash } from 'react-feather'
 import ChatMessage from './ChatMessage'
 import { GlobalContext } from './ContextProvider'
 import Dropdown from './Dropdown'

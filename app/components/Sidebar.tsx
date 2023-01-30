@@ -1,24 +1,15 @@
 'use client'
-import { memo, useContext } from 'react'
+import { useContext } from 'react'
 import { GlobalContext } from './ContextProvider'
 
 import Dropdown from './Dropdown'
 import Header from './Header'
 
-const Sidebar = memo(() => {
-  const { model, setModel, temperature, setTemperature } = useContext(GlobalContext)
+const Sidebar = () => {
+  const { temperature, setTemperature } = useContext(GlobalContext)
   return (
-    <aside className=' h-full w-64 py-4 flex flex-col justify-between'>
+    <aside className='hidden md:flex h-full w-64 py-4 flex-col justify-between'>
       <Header />
-      <Dropdown
-        title='AI Type'
-        options={[
-          { name: 'Multipurpose', type: 'text-davinci-003' },
-          { name: 'Code', type: 'code-davinci-002' },
-        ]}
-        state={model}
-        setState={setModel}
-      />
       <Dropdown
         title='Repeat Answer'
         options={[
@@ -28,7 +19,7 @@ const Sidebar = memo(() => {
         ]}
         state={temperature}
         setState={setTemperature}
-        className='mt-10 mb-auto'
+        className=' mb-auto'
       />
 
       <footer className='leading-none opacity-60'>
@@ -43,6 +34,6 @@ const Sidebar = memo(() => {
       </footer>
     </aside>
   )
-})
+}
 
 export default Sidebar

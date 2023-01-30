@@ -9,9 +9,9 @@ const openAI = new OpenAIApi(configuration)
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    const { model, temperature, prompt } = req.body
+    const { temperature, prompt } = req.body
     const response = await openAI.createCompletion({
-      model: model.type,
+      model: 'text-davinci-003',
       prompt,
       temperature: temperature.type,
       max_tokens: 3000,

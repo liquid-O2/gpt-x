@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.messages::-webkit-scrollbar {
+  width: 0px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background: #f1f1f100;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: #99b54f;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+  background: #424e22;
+}

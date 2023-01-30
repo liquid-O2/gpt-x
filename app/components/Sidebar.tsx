@@ -30,7 +30,7 @@ const Sidebar = () => {
           className='leading-none hover:underline underline-offset-2'>
           © Built by Arunava
         </a>
-        <p className='text-lg -mt-1'>This site is not associated with Open AI</p>
+        <p className='text-lg -mt-1'>𖧐 This site is not associated with Open AI</p>
       </footer>
     </aside>
   )

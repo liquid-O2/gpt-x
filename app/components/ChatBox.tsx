@@ -1,8 +1,10 @@
 'use client'
 import React, { FormEvent, Suspense, useContext, useRef, useState } from 'react'
-import { ChevronRight, Sidebar, Trash } from 'react-feather'
+import { ChevronRight, Divide, Sidebar, Trash } from 'react-feather'
 import ChatMessage from './ChatMessage'
 import { GlobalContext } from './ContextProvider'
+import Dropdown from './Dropdown'
+import Header from './Header'
 
 export type TChatLog = {
   user: 'You' | 'ChatGPT'
@@ -10,8 +12,9 @@ export type TChatLog = {
 }
 
 const ChatBox = () => {
-  const { temperature } = useContext(GlobalContext)
+  const { temperature, setTemperature } = useContext(GlobalContext)
   const inputRef = useRef<HTMLInputElement | null>(null)
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [prompt, setPrompt] = useState('')
   const [chatLog, setChatLog] = useState<TChatLog[]>([])
   async function handleSubmit(e: FormEvent) {
@@ -32,9 +35,38 @@ const ChatBox = () => {
   }
   return (
     <section className='overflow-hidden w-full relative h-full rounded-2xl bg-background-light border border-white/5 px-4 md:px-8 '>
-      <button className='md:hidden flex absolute top-4 z-50 left-4 justify-center items-center p-3 bg-border-dark border backdrop-blur-xl border-border-dark rounded-lg'>
+      <button
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        className='md:hidden flex absolute top-4 z-50 left-4 justify-center items-center p-3 bg-border-dark border backdrop-blur-xl border-border-dark rounded-lg'>
         <Sidebar size={16} />
       </button>
+      {isSidebarOpen && (
+        <aside className='absolute z-[999] px-4 bg-background top-0 left-0 flex h-full w-full py-4 flex-col justify-between'>
+          <Header setIsSidebarOpen={setIsSidebarOpen} />
+          <Dropdown
+            title='Repeat Answer'
+            options={[
+              { name: 'Minimal', type: 0.6 },
+              { name: 'Repeat', type: 0 },
+              { name: 'None', type: 1 },
+            ]}
+            state={temperature}
+            setState={setTemperature}
+            className=' mb-auto'
+          />
+
+          <footer className='leading-none opacity-60'>
+            <a
+              href='https://www.arunava.dev'
+              target={'_blank'}
+              rel={'noreffer noreferrer'}
+              className='leading-none hover:underline underline-offset-2'>
+              © Built by Arunava
+            </a>
+            <p className='text-lg -mt-1'>This site is not associated with Open AI</p>
+          </footer>
+        </aside>
+      )}
       <button
         onClick={() => setChatLog([])}
         className='flex absolute top-4 z-50 right-4 justify-center items-center p-3 bg-border-dark border backdrop-blur-xl border-border-dark rounded-lg'>

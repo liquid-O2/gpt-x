@@ -15,7 +15,7 @@ const Dropdown = ({ title, options, state, setState, className }: TDropdown) => 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   return (
     <menu className={`relative ${className}`}>
-      <p className='text-[2rem] mb-2 leading-none opacity-80'>{title}</p>
+      <p className='text-[1.8rem] mb-2 leading-none opacity-80'>{title}</p>
       <button
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         className='w-full h-12 border border-border-dark rounded-lg flex justify-between items-center px-4'>
